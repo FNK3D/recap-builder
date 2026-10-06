@@ -69,8 +69,7 @@ The **HTML export** has a built-in compression setting:
 
 ## 🖼️ Screenshots
 
-> _Coming soon — add your own screenshots to `docs/` and reference them here._
-
+<img src="./screenshot.png" alt="RECAP Builder preview" width="700">
 ---
 
 ## 🛠️ Tech
