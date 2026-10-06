@@ -6,6 +6,8 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)]()
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)]()
 
+[![Live Demo](https://img.shields.io/badge/▶_LIVE_DEMO-00ffcc?style=for-the-badge&logoColor=121212)](https://fnk3d.github.io/recap-builder/recap.html)
+
 ---
 
 ## ✨ What is it?
