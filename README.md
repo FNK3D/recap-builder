@@ -70,6 +70,7 @@ The **HTML export** has a built-in compression setting:
 ## 🖼️ Screenshots
 
 <img src="./screenshot.png" alt="RECAP Builder preview" width="700">
+
 ---
 
 ## 🛠️ Tech
