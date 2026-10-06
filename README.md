@@ -1,3 +1,4 @@
+![Header](https://capsule-render.vercel.app/api?type=soft&color=0f1f1b&height=180&text=RECAP%20Builder&fontSize=60&fontColor=00ffcc&desc=Standalone%20HTML%20widget&descAlignY=65)
 # 💠 RECAP Builder
 
 > A standalone HTML widget for building portfolio grids: circle, diamond, 3×3 square, or shards. Exports to PNG, SVG, and HTML.
