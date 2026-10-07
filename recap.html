@@ -86,25 +86,17 @@ body.preview-mode .modal{display:none!important;}
 input[type=file]{display:none;}
 .slice.grid-slice{transition:transform .35s cubic-bezier(.34,1.56,.64,1), background .3s ease;}
 .slice.grid-slice.has-image{cursor:grab;}
-
-/* ===== CENTER TILE — позиционируется через left/top, а НЕ через translate(-50%,-50%) ===== */
-.center-tile{
-  position:absolute;
-  /* top/left/width/height устанавливаются в JS */
-  z-index:20; touch-action:none; cursor:pointer; overflow:hidden;
-  transition:background .3s ease, filter .3s ease;
-  border-radius:50%;
-}
+.center-tile{position:absolute;z-index:20;touch-action:none;cursor:pointer;overflow:hidden;transition:background .3s ease,filter .3s ease;border-radius:50%;}
 .center-tile.has-image{cursor:grab;}
 .center-tile.has-image:active{cursor:grabbing;}
 .center-tile.drop-hover > .center-tile-content{--extra-filter:brightness(1.5);}
-.center-tile-content{position:absolute; inset:0; display:flex; justify-content:center; align-items:center; background:var(--tile-bg); overflow:hidden; --extra-filter:brightness(1); filter:var(--extra-filter); transition:background .3s ease, filter .3s ease;}
-.center-tile-content::before{content:''; position:absolute; inset:0; background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.30),rgba(255,255,255,.10) 45%,transparent 70%); opacity:0; transition:opacity .35s ease; pointer-events:none; z-index:5; mix-blend-mode:screen;}
+.center-tile-content{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;background:var(--tile-bg);overflow:hidden;--extra-filter:brightness(1);filter:var(--extra-filter);transition:background .3s ease,filter .3s ease;}
+.center-tile-content::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.30),rgba(255,255,255,.10) 45%,transparent 70%);opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:5;mix-blend-mode:screen;}
 .center-tile:hover > .center-tile-content{background:var(--tile-bg-hover);}
 .center-tile:hover > .center-tile-content::before{opacity:1;}
-.center-tile.has-image:hover > .center-tile-content{background:transparent; --extra-filter:brightness(1.1);}
+.center-tile.has-image:hover > .center-tile-content{background:transparent;--extra-filter:brightness(1.1);}
 .center-tile.has-image:hover > .center-tile-content::before{opacity:.75;}
-.center-tile-content img{width:100%; height:100%; object-fit:cover; object-position:50% 50%; display:none; position:absolute; top:0; left:0; z-index:2; user-select:none; -webkit-user-drag:none; pointer-events:none; will-change:transform;}
+.center-tile-content img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:none;position:absolute;top:0;left:0;z-index:2;user-select:none;-webkit-user-drag:none;pointer-events:none;will-change:transform;}
 body.preview-mode{padding:0;justify-content:center;min-height:100vh;}
 body.preview-mode .controls,body.preview-mode h1{display:none;}
 body.preview-mode #stage{margin:0;}
@@ -193,7 +185,6 @@ body.preview-mode .order-controls{display:none!important;}
 </style>
 </head>
 <body>
-
 <div class="history-btns">
   <button class="history-btn" id="undoBtn" disabled title="Undo (Ctrl+Z)">↶</button>
   <button class="history-btn" id="redoBtn" disabled title="Redo (Ctrl+Y)">↷</button>
@@ -379,7 +370,6 @@ body.preview-mode .order-controls{display:none!important;}
     <button class="modal-close" onclick="closeCompressionModal()" title="Close">×</button>
     <h2 class="modal-title" data-i18n="compressTitle">Экспорт HTML — параметры сжатия</h2>
     <div class="modal-desc" data-i18n-html="compressDesc"></div>
-
     <div class="comp-radio-row" id="compRadioRow">
       <label class="comp-radio selected" data-mode="none">
         <input type="radio" name="compMode" value="none" checked>
@@ -390,7 +380,6 @@ body.preview-mode .order-controls{display:none!important;}
         <span data-i18n="compressModeOn">Сжать фотографии</span>
       </label>
     </div>
-
     <div class="comp-panel" id="compPanel" style="display:none;">
       <div class="comp-row">
         <div class="comp-row-label">
@@ -408,7 +397,6 @@ body.preview-mode .order-controls{display:none!important;}
       </div>
       <div class="comp-info" data-i18n-html="compressHint"></div>
     </div>
-
     <div class="comp-weight-box" id="compWeightBox">
       <div class="w-row">
         <span class="w-label" data-i18n="weightOriginal">Оригиналы</span>
@@ -427,9 +415,7 @@ body.preview-mode .order-controls{display:none!important;}
         <span id="compWeightNote"></span>
       </div>
     </div>
-
     <div class="comp-spinner" id="compSpinner" data-i18n="compressWorking">⏳ Обработка… это может занять пару секунд</div>
-
     <div class="modal-actions">
       <button class="secondary" onclick="closeCompressionModal()" data-i18n="compressCancel">Отмена</button>
       <button onclick="runExportFromCompressionModal()" id="compDownloadBtn" data-i18n="compressDownload">⬇ Скачать HTML</button>
@@ -447,6 +433,7 @@ body.preview-mode .order-controls{display:none!important;}
 
 <script>
 console.log('%c RECAP Builder ','background:#00ffcc;color:#000;font-weight:bold;padding:2px 6px;border-radius:3px;','v1.0 · Author: FNK3D · License: MIT');
+
 const translations = {
   ru: {
     appTitle:'💠 RECAP Builder', shape:'Форма', shapeCircle:'Круг', shapePolygon:'Ромб', shapeSquare:'Квадрат 3×3', shapeShards:'Осколки',
@@ -968,7 +955,7 @@ document.getElementById('undoBtn').addEventListener('click', undo);
 document.getElementById('redoBtn').addEventListener('click', redo);
 window.addEventListener('load',()=>{ applyLanguage(); applyRingMode(); applyRingFontSize(); applyRingLetterSpacing(); applyRingRadius(); applyRingColor(); applyRingBand(); applyFont(); });
 
-/* ============ PATH GENERATORS (unchanged, compact) ============ */
+/* ============ PATH GENERATORS ============ */
 function getInsetSlicePathCircle(cx,cy,rOuterBase,rInnerRaw,midDeg,halfDeg,d,cornerR){
   const ψL=midDeg-halfDeg, ψR=midDeg+halfDeg; const alpha=2*halfDeg*Math.PI/180; const rMin=d/Math.sin(alpha/2||1);
   const rInner=Math.max(rMin,rInnerRaw); const rOuter=rOuterBase-d; if(rInner>=rOuter)return null;
@@ -1109,7 +1096,6 @@ function _generateLayoutInner(){
   const rOuterBase = shape === 'polygon' ? R : (R - gapWidth);
   const centerRadius = centerSize / 2; const rInnerRaw = centerRadius + gapWidth;
 
-  // helper для создания центральной плитки с явным left/top
   function applyCenterPosition(tile, size){ tile.style.width = size + 'px'; tile.style.height = size + 'px'; tile.style.left = (400 - size/2) + 'px'; tile.style.top = (400 - size/2) + 'px'; tile.style.transform = ''; }
 
   if (shape === 'shards') {
@@ -1232,8 +1218,6 @@ function _generateLayoutInner(){
 
 /* ============ INTERACTIONS ============ */
 function setup3DTilt(slice,numSlices){
-  // ФИКС: центральная плитка НЕ должна получать 3D-наклон.
-  // Иначе transform перезаписывает позиционирование и плитка прыгает.
   if (slice.classList.contains('center-tile')) return;
   const sliceMult=Math.sqrt(numSlices/6);
   slice.addEventListener('mouseenter',()=>slice.classList.add('tilting'));
@@ -1327,13 +1311,15 @@ function buildExportSVG(){
       w = cs; h = cs;
       const parsed = _parseClipPathString(cssClip);
       if (parsed && parsed.type === 'polygon'){
-        const pts = parsed.points.map(p => { const px = (parseFloat(p.x)/100) * cs; const py = (parseFloat(p.y)/100) * cs; return `${px.toFixed(2)},${py.toFixed(2)}`; }).join(' ');
+        /* ФИКС: координаты маски центральной плитки теперь смещены на x,y — совпадают с картинкой */
+        const pts = parsed.points.map(p => { const px = x + (parseFloat(p.x)/100) * cs; const py = y + (parseFloat(p.y)/100) * cs; return `${px.toFixed(2)},${py.toFixed(2)}`; }).join(' ');
         clipSvg = `<polygon points="${pts}"/>`;
         outlineShapeSvg = `<polygon points="${pts}" fill="none" stroke="${outlineCol}" stroke-width="${(outlineT*2).toFixed(2)}"/>`;
       } else {
         const r = cs/2;
-        clipSvg = `<circle cx="${r.toFixed(2)}" cy="${r.toFixed(2)}" r="${r.toFixed(2)}"/>`;
-        outlineShapeSvg = `<circle cx="${r.toFixed(2)}" cy="${r.toFixed(2)}" r="${r.toFixed(2)}" fill="none" stroke="${outlineCol}" stroke-width="${(outlineT*2).toFixed(2)}"/>`;
+        /* ФИКС: центр круга теперь на x+r, y+r — совпадает с картинкой */
+        clipSvg = `<circle cx="${(x + r).toFixed(2)}" cy="${(y + r).toFixed(2)}" r="${r.toFixed(2)}"/>`;
+        outlineShapeSvg = `<circle cx="${(x + r).toFixed(2)}" cy="${(y + r).toFixed(2)}" r="${r.toFixed(2)}" fill="none" stroke="${outlineCol}" stroke-width="${(outlineT*2).toFixed(2)}"/>`;
       }
     } else {
       const parsed = _parseClipPathString(cssClip);
@@ -1375,6 +1361,24 @@ function buildExportSVG(){
   const parts = [];
   parts.push(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000" viewBox="0 0 1000 1000">`);
   parts.push(`<defs>${styleTag}${clipDefs.join('')}</defs>`);
+  if (bgToggle.value === 'on') {
+  const bgCol = bgColorInput.value;
+  const shp = shapeSelect.value;
+  if (shp === 'circle') {
+    parts.push(`<circle cx="500" cy="500" r="400" fill="${bgCol}"/>`);
+  } else if (shp === 'polygon') {
+    const N = parseInt(numSlicesInput.value, 10) || 6;
+    const pts = [];
+    for (let k = 0; k < N; k++) {
+      const th = k * 2 * Math.PI / N;
+      const x = 500 + 400 * Math.sin(th);
+      const y = 500 - 400 * Math.cos(th);
+      pts.push(x.toFixed(2) + ',' + y.toFixed(2));
+    }
+    parts.push(`<polygon points="${pts.join(' ')}" fill="${bgCol}"/>`);
+  }
+  /* Квадрат и осколки — подложка не рисуется, как и в превью */
+}
   parts.push(groups.join(''));
   parts.push(textRingStr);
   parts.push(`</svg>`);
@@ -1397,7 +1401,6 @@ async function updateCompressionWeight(immediate){ const myGen = ++weightCalcGen
 function scheduleWeightUpdate(){ if (weightDebounceTimer) clearTimeout(weightDebounceTimer); weightDebounceTimer = setTimeout(() => updateCompressionWeight(false), 350); }
 async function buildEmbedHTMLAsync(options){
   const clone = document.documentElement.cloneNode(true);
-  // ФИКС: убираем состояние открытых модалок/лайтбокса, чтобы они не появлялись в экспортированном HTML
   clone.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open'));
   clone.querySelectorAll('.lightbox.open').forEach(l => l.classList.remove('open'));
   function syncControl(id){ const orig = document.getElementById(id); const copy = clone.querySelector('#' + CSS.escape(id)); if (!orig || !copy) return; if (copy.tagName === 'SELECT'){ [...copy.options].forEach(o => { if (o.value === orig.value) o.setAttribute('selected',''); else o.removeAttribute('selected'); }); } else if (copy.type === 'checkbox'){ if (orig.checked) copy.setAttribute('checked',''); else copy.removeAttribute('checked'); } else copy.setAttribute('value', orig.value); }
@@ -1446,7 +1449,6 @@ if (window.__EMBED__){
   if (window.__EMBED_ACCENT__) setAccent(window.__EMBED_ACCENT__);
   document.querySelectorAll('.slice img, .center-tile img').forEach(img => { if (img.src && img.src.startsWith('data:')){ const m = /translate3d\(\s*([-\d.]+)px,\s*([-\d.]+)px,\s*0(?:px)?\s*\)\s*scale\(\s*([\d.]+)\s*\)/.exec(img.style.transform || ''); transforms[img.id] = m ? {x: parseFloat(m[1]), y: parseFloat(m[2]), scale: parseFloat(m[3])} : {x: 0, y: 0, scale: 1}; img.closest('.slice, .center-tile').classList.add('has-image'); } });
   const ns = parseInt(numSlicesInput.value) || 6;
-  // ФИКС: setup3DTilt только для .slice, НЕ для .center-tile
   canvas.querySelectorAll('.slice').forEach(el => { setupInteractions(el); setup3DTilt(el, ns); const fi = el.querySelector('input[type=file]'); if (fi) fi.disabled = true; });
   canvas.querySelectorAll('.center-tile').forEach(el => { setupInteractions(el); const fi = el.querySelector('input[type=file]'); if (fi) fi.disabled = true; });
   applyLanguage(); applyFont();
