@@ -2,6 +2,7 @@
 
 > A standalone HTML widget for building portfolio grids: circle, diamond, 3×3 square, or shards. Exports to PNG, SVG, and HTML.
 
+[![Latest Release](https://img.shields.io/github/v/release/FNK3D/recap-builder?style=for-the-badge&color=00ffcc)](https://github.com/FNK3D/recap-builder/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-00ffcc.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)]()
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)]()
